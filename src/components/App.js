@@ -1,7 +1,9 @@
 import React from 'react';
 import TripBuilder from './TripBuilder';
+import WeatherDisplay from './WeatherDisplay';
+import weatherAPI from '../api/weather';
 
-import * as apiCalls from '../api';
+const API_KEY = 'b98eda624dda452f9459a883922ee87e';
 
 class App extends React.Component{
     constructor(props){
@@ -12,14 +14,16 @@ class App extends React.Component{
             tripStartDate: null,
             tripEndDate: null,
             tripLocation: null,
-            weatherData: null
+            weatherData: []
         }
         this.getWeatherAtLocation = this.getWeatherAtLocation.bind(this);
     }
     
     async getWeatherAtLocation(){
-		let weatherData = await apiCalls.getWeatherAtLocation(this.state.tripLocation);
-		this.setState({weatherData});
+		//let weatherData = await apiCalls.getWeatherAtLocation(this.state.tripLocation);
+        //this.setState({weatherData});
+        const response = await weatherAPI.get(`forecast/daily?key=${API_KEY}&units=I&country=US&postal_code=${this.state.tripLocation}`);
+        this.setState({weatherData: response.data.data});
 	}
 
     addMember = (memberType) => {
@@ -83,6 +87,7 @@ class App extends React.Component{
                     updateLocation={this.updateLocation}
                     onLocationSubmit={this.onLocationSubmit}
                 />
+                <WeatherDisplay weatherData={this.state.weatherData} />
             </div>
         );
     }

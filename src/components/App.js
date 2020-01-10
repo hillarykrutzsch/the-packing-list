@@ -2,6 +2,7 @@ import React from 'react';
 import TripBuilder from './TripBuilder';
 import WeatherDisplay from './WeatherDisplay';
 import weatherAPI from '../api/weather';
+import PackingListDisplay from './PackingListDisplay';
 
 const API_KEY = 'b98eda624dda452f9459a883922ee87e';
 
@@ -10,6 +11,7 @@ class App extends React.Component{
         super(props);
         this.idCounter = 0;
         this.state = {
+            appView: 'trip_builder', //'trip_builder', 'packing_list'
             familyMembers: [],
             tripStartDate: null,
             tripEndDate: null,
@@ -23,8 +25,14 @@ class App extends React.Component{
 		//let weatherData = await apiCalls.getWeatherAtLocation(this.state.tripLocation);
         //this.setState({weatherData});
         const response = await weatherAPI.get(`forecast/daily?key=${API_KEY}&units=I&country=US&postal_code=${this.state.tripLocation}`);
-        this.setState({weatherData: response.data.data});
-	}
+        this.setState({weatherData:response.data.data})
+        this.calculatePackingList();
+
+    }
+    
+    calculatePackingList(){
+        this.setState({appView: 'packing_list'});
+    }
 
     addMember = (memberType) => {
         let newMember = {
@@ -76,18 +84,23 @@ class App extends React.Component{
     render(){
         return (
             <div style={{marginTop:'40px'}}>
-                <TripBuilder 
-                    familyList={this.state.familyMembers}
-                    tripStartDate={this.state.tripStartDate}
-                    tripEndDate={this.state.tripEndDate}
-                    addMember={this.addMember} 
-                    removeMember={this.removeMember}  
-                    updateDiaperSituation={this.updateDiaperSituation}
-                    onDatesChange={this.onDatesChange}
-                    updateLocation={this.updateLocation}
-                    onLocationSubmit={this.onLocationSubmit}
-                />
-                <WeatherDisplay weatherData={this.state.weatherData} />
+                {this.state.appView === 'trip_builder' ? (
+                    <TripBuilder 
+                        familyList={this.state.familyMembers}
+                        tripStartDate={this.state.tripStartDate}
+                        tripEndDate={this.state.tripEndDate}
+                        addMember={this.addMember} 
+                        removeMember={this.removeMember}  
+                        updateDiaperSituation={this.updateDiaperSituation}
+                        onDatesChange={this.onDatesChange}
+                        updateLocation={this.updateLocation}
+                        onLocationSubmit={this.onLocationSubmit}
+                    />
+                ) : 
+                (
+                    <PackingListDisplay weatherData={this.state.weatherData} />
+                )}
+                
             </div>
         );
     }

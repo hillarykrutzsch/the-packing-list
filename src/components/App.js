@@ -16,7 +16,7 @@ class App extends React.Component{
             tripStartDate: null,
             tripEndDate: null,
             tripLocation: null,
-            weatherData: []
+            weatherData: [],
         }
         this.getWeatherAtLocation = this.getWeatherAtLocation.bind(this);
     }

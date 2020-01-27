@@ -1,11 +1,13 @@
 const items = {
-    clothing: {
+    daily_clothing:{
         underwear:1,
-        bras:1,
         socks:1,
-        shoes:1,
         shirts:1,
         pants:1,
+    },
+    supplemental_clothing: {
+        bras:1,
+        shoes:1,
         jackets:1,
         sweaters:1,
     },

@@ -11,12 +11,14 @@ const items = {
         white_noise_machine:1,
         pajamas:1,
     }
-    clothing: {
+    daily_clothing:{
         underwear:1,
         socks:1,
-        shoes:1,
         shirts:1,
-        pants:1,
+        pants:1
+    },
+    supplemental_clothing: {
+        shoes:1,
         jackets:1,
         sweaters:1,
     },

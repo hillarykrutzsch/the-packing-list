@@ -13,7 +13,6 @@ class PackingList extends React.Component{
     componentDidMount(){
         let adultCategories = this.renderListItems(itemsListAdult);
         let childCategories = this.renderListItems(itemsListChild);
-
         this.setState({ adultCategories, childCategories });
     }
 
@@ -57,7 +56,7 @@ class PackingList extends React.Component{
 
     render(){
         return (
-            <div>
+            <div className="ui container">
                 {this.renderFamilyList()}
             </div>
         );

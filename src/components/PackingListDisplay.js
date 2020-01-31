@@ -5,7 +5,7 @@ import PackingList from './PackingList';
 class PackingListDisplay extends React.Component{
     render(){
         return (
-            <div>
+            <div className="ui container">
                 <h1>Here is your packing list:</h1>
 
                 <PackingList 

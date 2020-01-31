@@ -16,7 +16,7 @@ class App extends React.Component{
             tripStartDate: null,
             tripEndDate: null,
             tripLocation: null,
-            weatherData: [],
+            weatherData: []
         }
         this.getWeatherAtLocation = this.getWeatherAtLocation.bind(this);
     }
@@ -98,7 +98,10 @@ class App extends React.Component{
                     />
                 ) : 
                 (
-                    <PackingListDisplay weatherData={this.state.weatherData} />
+                    <PackingListDisplay 
+                        weatherData={this.state.weatherData} 
+                        familyList={this.state.familyMembers}
+                    />
                 )}
                 
             </div>

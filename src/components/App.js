@@ -24,9 +24,11 @@ class App extends React.Component{
     async getWeatherAtLocation(){
 		//let weatherData = await apiCalls.getWeatherAtLocation(this.state.tripLocation);
         //this.setState({weatherData});
-        const response = await weatherAPI.get(`forecast/daily?key=${API_KEY}&units=I&country=US&postal_code=${this.state.tripLocation}`);
-        this.setState({weatherData:response.data.data})
-        this.calculatePackingList();
+        if(this.state.tripLocation != null){
+            const response = await weatherAPI.get(`forecast/daily?key=${API_KEY}&units=I&country=US&postal_code=${this.state.tripLocation}`);
+            this.setState({weatherData:response.data.data})
+            this.calculatePackingList();
+        }
 
     }
     

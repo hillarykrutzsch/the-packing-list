@@ -10,6 +10,7 @@ class PackingListDisplay extends React.Component{
 
                 <PackingList 
                     familyList={this.props.familyList} 
+                    numDays={this.props.numDays}
                 />
 
                 <h2>Weather Info:</h2>

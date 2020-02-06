@@ -15,6 +15,7 @@ class App extends React.Component{
             familyMembers: [],
             tripStartDate: null,
             tripEndDate: null,
+            numDays:0,
             tripLocation: null,
             weatherData: []
         }
@@ -103,6 +104,7 @@ class App extends React.Component{
                     <PackingListDisplay 
                         weatherData={this.state.weatherData} 
                         familyList={this.state.familyMembers}
+                        numDays={this.state.numDays}
                     />
                 )}
                 

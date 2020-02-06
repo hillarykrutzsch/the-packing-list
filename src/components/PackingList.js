@@ -18,15 +18,20 @@ class PackingList extends React.Component{
 
     renderListItems = (listObject) => {
         let listCategories = [];
-        Object.keys(listObject).forEach(key=>{
-            let list = [];
-            Object.keys(listObject[key]).forEach(childKey=>{
-                list.push((<li>{childKey}:{listObject[key][childKey]}</li>));
+
+        
+
+        Object.keys(listObject).forEach(categoryName=>{
+            let listOfItems = [];
+            Object.keys(listObject[categoryName]).forEach(childItemName=>{
+                //need logic for multiplying category item by numberOfDays or fraction of numDays
+
+                listOfItems.push((<li>{childItemName}:{listObject[categoryName][childItemName]*this.props.numDays}</li>));
             });
             listCategories.push((
                 <div>
-                    <h5>{key}</h5>
-                    <ul>{list}</ul>
+                    <h5>{categoryName}</h5>
+                    <ul>{listOfItems}</ul>
                 </div>
             ));
         });

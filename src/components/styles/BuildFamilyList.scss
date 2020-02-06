@@ -1,0 +1,15 @@
+.build-family-list{
+    margin: 1em 0;
+    padding: 1em;
+    text-align:center;
+    .add-buttons{
+        display:flex;
+        justify-content: space-evenly;
+        .selector {
+            margin-bottom:2em;
+            h3{
+                margin-bottom:0.25em;
+            }
+        }
+    }
+}

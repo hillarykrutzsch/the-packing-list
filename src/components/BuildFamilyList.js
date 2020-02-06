@@ -1,5 +1,6 @@
 
 import React from 'react';
+import './styles/BuildFamilyList.scss';
 
 class BuildFamilyList extends React.Component{
     
@@ -14,18 +15,18 @@ class BuildFamilyList extends React.Component{
             return member.type==='child';
         });
         return(
-            <div style={{border: '1px solid black', margin: '1em 0', padding: '1em'}}>
+            <div className="build-family-list">
                 <h1>How many family members are travelling?</h1>
                 <div className="ui container" style={{marginTop:'30px'}}>
-                    <div className="add-buttons" style={{marginBottom:'30px'}} style={{display:'inline-block', verticalAlign:'top'}}>
-                        <h3>Adults:</h3>
-                        <div className="adult-selector">
+                    <div className="add-buttons">
+                        <div className="selector adult-selector">
+                            <h3>Adults:</h3>
                             <button className="ui button" onClick={() => this.props.removeMember('adult')}><i className="icon minus"></i></button>
                             <h3 style={{display:'inline-block', margin:'0 1em'}}>{adultCount.length}</h3>
                             <button className="ui button" onClick={() => this.props.addMember('adult')}><i className="icon plus"></i></button>
                         </div>
-                        <h3>Children:</h3>
-                        <div className="child-selector">
+                        <div className="selector child-selector">
+                            <h3>Children:</h3>
                             <button className="ui button" onClick={() => this.props.removeMember('child')}><i className="icon minus"></i></button>
                             <h3 style={{display:'inline-block', margin:'0 1em'}}>{childCount.length}</h3>
                             <button className="ui button" onClick={() => this.props.addMember('child')}><i className="icon plus"></i></button>

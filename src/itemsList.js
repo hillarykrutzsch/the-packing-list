@@ -1,17 +1,17 @@
 export const itemsListAdult = {
-    clothing_daily:{
+    "Clothing Daily":{
         underwear:1,
         socks:1,
         shirts:1,
         pants:1,
     },
-    clothing_supplemental: {
+    "Clothing Supplemental": {
         bras:1,
         shoes:1,
         jackets:1,
         sweaters:1,
     },
-    bathroom: {
+    "Bathroom": {
         glasses:1,
         contact_solution:1,
         toothbrush:1,
@@ -24,11 +24,11 @@ export const itemsListAdult = {
         conditioner:1,
         hair_dryer:1
     },
-    bathroom_daily:{
+    "Bathroom Daily":{
         contacts:1,
         tampons:1
     },
-    nightstand:{
+    "Accessories":{
         medication:1,
         chargers:1,
         vitamins:1
@@ -36,23 +36,12 @@ export const itemsListAdult = {
 }
 
 export const itemsListChild = {
-    toilet_training:{
-        diapers:1,
-        pullups:1,
-        wipes:1,
-        diaper_cream:1,
-    },
-    sleeping:{
-        lovies:1,
-        sleepsack:1,
-        white_noise_machine:1,
-        pajamas:1,
-    },
     clothing_daily:{
         underwear:1,
         socks:1,
         shirts:1,
-        pants:1
+        pants:1,
+        pajamas:1
     },
     clothing_supplemental: {
         shoes:1,
@@ -69,6 +58,17 @@ export const itemsListChild = {
         vaseline:1,
         tylenol:1,
         snot_sucker:1,
-        saline_spray:1
+        saline_spray:1,
+        wipes:1,
+        diaper_cream:1
+    },
+    bathroom_daily:{
+        diapers:6,
+        pullups:1,
+    },
+    accessories:{
+        lovies:1,
+        sleepsack:1,
+        white_noise_machine:1
     }
 }

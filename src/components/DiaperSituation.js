@@ -61,8 +61,8 @@ class DiaperSituation extends React.Component{
             </div>
         ));
         return (
-            <div style={{border: '1px solid black', margin: '1em 0', padding: '1em'}}>
-                <h1>What is your current diaper situation: </h1>
+            <div style={{margin: '1em 0', padding: '1em'}}>
+                <h1 style={{textAlign:'center'}}>What is your current diaper situation: </h1>
                 {childList}
             </div>
         );

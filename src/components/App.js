@@ -4,6 +4,7 @@ import WeatherDisplay from './WeatherDisplay';
 import weatherAPI from '../api/weather';
 import moment from 'moment';
 import PackingListDisplay from './PackingListDisplay';
+import './styles/App.scss';
 
 const API_KEY = 'b98eda624dda452f9459a883922ee87e';
 

@@ -3,6 +3,7 @@ import BuildFamilyList from './BuildFamilyList';
 import DiaperSituation from './DiaperSituation';
 import DateSelector from './DateSelector';
 import LocationSelector from './LocationSelector';
+import './styles/TripBuilder.scss';
 
 class TripBuilder extends React.Component{
     constructor(props){
@@ -59,29 +60,31 @@ class TripBuilder extends React.Component{
                         return null;
                     }
                 })()}
-                <div className="ui buttons">
-                    <button 
-                        disabled={(this.state.currentPage < 2)} 
-                        className="ui labeled icon button" 
-                        onClick={() => {
-                            //skip diaper page if no children are traveling
-                            ((this.state.currentPage===3 && this.returnChildList().length) || this.state.currentPage!==3) ? this.setState({currentPage: this.state.currentPage-1}) : this.setState({currentPage: this.state.currentPage-2})
-                         }}
-                    >
-                        <i className="left chevron icon"></i>
-                        Back
-                    </button>
-                    <button 
-                        disabled={(this.state.currentPage === this.state.pageCount)} 
-                        className="ui right labeled icon button" 
-                        onClick={() => {
-                            //skip diaper page if no children are traveling
-                            ((this.state.currentPage===1 && this.returnChildList().length) || this.state.currentPage!==1) ? this.setState({currentPage: this.state.currentPage+1}) : this.setState({currentPage: this.state.currentPage+2})
-                         }}
-                    >
-                        Next
-                        <i className="right chevron icon"></i>
-                    </button>
+                <div className="nav-wrapper">
+                    <div className="ui buttons">
+                        <button 
+                            disabled={(this.state.currentPage < 2)} 
+                            className="ui labeled icon button" 
+                            onClick={() => {
+                                //skip diaper page if no children are traveling
+                                ((this.state.currentPage===3 && this.returnChildList().length) || this.state.currentPage!==3) ? this.setState({currentPage: this.state.currentPage-1}) : this.setState({currentPage: this.state.currentPage-2})
+                            }}
+                        >
+                            <i className="left chevron icon"></i>
+                            Back
+                        </button>
+                        <button 
+                            disabled={(this.state.currentPage === this.state.pageCount)} 
+                            className="ui right labeled icon button" 
+                            onClick={() => {
+                                //skip diaper page if no children are traveling
+                                ((this.state.currentPage===1 && this.returnChildList().length) || this.state.currentPage!==1) ? this.setState({currentPage: this.state.currentPage+1}) : this.setState({currentPage: this.state.currentPage+2})
+                            }}
+                        >
+                            Next
+                            <i className="right chevron icon"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         );

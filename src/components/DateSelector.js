@@ -14,7 +14,8 @@ class DateSelector extends React.Component{
     render(){
         return (
             <div>
-                <h1>What dates are you traveling?</h1>
+                <h1 style={{textAlign:'center'}}>What dates are you traveling?</h1>
+                <div style={{textAlign:'center',margin:'2em 0'}}>
                 <DateRangePicker
                     startDateId="startDate"
                     endDateId="endDate"
@@ -24,6 +25,7 @@ class DateSelector extends React.Component{
                     focusedInput={this.state.focusedInput}
                     onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
                 />
+                </div>
             </div>
         );
     }

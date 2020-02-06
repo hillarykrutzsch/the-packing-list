@@ -1,11 +1,11 @@
 export const itemsListAdult = {
-    daily_clothing:{
+    clothing_daily:{
         underwear:1,
         socks:1,
         shirts:1,
         pants:1,
     },
-    supplemental_clothing: {
+    clothing_supplemental: {
         bras:1,
         shoes:1,
         jackets:1,
@@ -13,18 +13,20 @@ export const itemsListAdult = {
     },
     bathroom: {
         glasses:1,
-        contacts:1,
         contact_solution:1,
         toothbrush:1,
         toothpaste:1,
         facewash:1,
-        tampons:1,
         makeup:1,
         hairbrush:1,
         hairproduct:1,
         shampoo:1,
         conditioner:1,
         hair_dryer:1
+    },
+    bathroom_daily:{
+        contacts:1,
+        tampons:1
     },
     nightstand:{
         medication:1,
@@ -46,13 +48,13 @@ export const itemsListChild = {
         white_noise_machine:1,
         pajamas:1,
     },
-    daily_clothing:{
+    clothing_daily:{
         underwear:1,
         socks:1,
         shirts:1,
         pants:1
     },
-    supplemental_clothing: {
+    clothing_supplemental: {
         shoes:1,
         jackets:1,
         sweaters:1,

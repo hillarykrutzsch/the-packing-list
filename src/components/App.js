@@ -2,6 +2,7 @@ import React from 'react';
 import TripBuilder from './TripBuilder';
 import WeatherDisplay from './WeatherDisplay';
 import weatherAPI from '../api/weather';
+import moment from 'moment';
 import PackingListDisplay from './PackingListDisplay';
 
 const API_KEY = 'b98eda624dda452f9459a883922ee87e';
@@ -72,7 +73,15 @@ class App extends React.Component{
     }
 
     onDatesChange = (tripStartDate, tripEndDate) => {
-        this.setState({ tripStartDate, tripEndDate   });
+        let numDays = this.state.numDays;
+        if(tripStartDate && tripEndDate){
+            let a = moment(tripStartDate._d).format("YYYY/MM/DD");
+            console.log(a);
+            let b = moment(tripEndDate._d).format("YYYY/MM/DD");
+            console.log(b);
+            numDays = moment(b).diff(moment(a), 'days');
+        } 
+        this.setState({ tripStartDate, tripEndDate, numDays   });
     }
 
     updateLocation = (tripLocation) => {

@@ -11,21 +11,24 @@ class PackingList extends React.Component{
         }
     }
 
-    componentDidMount(){
-        let adultCategories = this.renderListItems(itemsListAdult);
-        let childCategories = this.renderListItems(itemsListChild);
-        this.setState({ adultCategories, childCategories });
-    }
-
-    renderListItems = (listObject) => {
+    renderListItems = (familyMember) => {
         let listCategories = [];
+        let listObject = null;
+        if(familyMember.type == 'adult'){
+            listObject = JSON.parse(JSON.stringify(itemsListAdult));
+        }
+        else{
+            listObject = JSON.parse(JSON.stringify(itemsListChild));
+        }
         Object.keys(listObject).forEach(categoryName=>{
             let listOfItems = [];
             Object.keys(listObject[categoryName]).forEach(childItemName=>{
                 let multiplier = 1;
                 switch(categoryName){
                     case "Clothing Daily":
+                    case "clothing_daily":
                     case "Bathroom Daily":
+                    case "bathroom_daily":
                         //1 for every 1 day
                         multiplier = this.props.numDays;
                     break;
@@ -34,12 +37,34 @@ class PackingList extends React.Component{
                         multiplier = Math.ceil(this.props.numDays / 3);
                     break;   
                 }
-                listOfItems.push((
-                    <label>
-                        <input type="checkbox" value={childItemName} />
-                        &nbsp;{listObject[categoryName][childItemName]*multiplier} {childItemName}
-                    </label>
-                ));
+                //diapers
+                if(familyMember.type == 'child'){
+                    console.log('diapers:' + familyMember.diapers);
+                    if(familyMember.diapers == 'diapers'){
+                        listObject['bathroom_daily']['pullups'] = 0;
+                        listObject['clothing_daily']['underwear'] = 0;
+                    }
+                    if(familyMember.diapers == 'pullups'){
+                        listObject['bathroom_daily']['diapers'] = 0;
+                        listObject['clothing_daily']['underwear'] = 0;
+                    }
+                    if(familyMember.diapers == 'combo'){
+                        listObject['bathroom_daily']['diapers'] = 0;
+                    }
+                    if(familyMember.diapers == 'underwear'){
+                        listObject['bathroom_daily']['diapers'] = 0;
+                        listObject['bathroom_daily']['pullups'] = 0;
+                    }
+                }
+                let numItems = listObject[categoryName][childItemName]*multiplier;
+                if(numItems > 0){
+                    listOfItems.push((
+                        <label>
+                            <input type="checkbox" value={childItemName} />
+                            &nbsp;{numItems} {childItemName}
+                        </label>
+                    ));
+                }
             });
             listCategories.push((
                 <div>
@@ -48,6 +73,7 @@ class PackingList extends React.Component{
                 </div>
             ));
         });
+        console.log(listCategories);
         return listCategories;
     }
 
@@ -57,7 +83,7 @@ class PackingList extends React.Component{
                 return (
                     <div className="family-member-list">
                         <h3>Adult:</h3> 
-                        {this.state.adultCategories}
+                        {this.renderListItems(familyMember)}
                     </div>
                 );
             }
@@ -65,7 +91,7 @@ class PackingList extends React.Component{
                 return (
                     <div className="family-member-list">
                         <h3>Child:</h3>
-                        {this.state.childCategories}
+                        {this.renderListItems(familyMember)}
                     </div>
                 );
             }

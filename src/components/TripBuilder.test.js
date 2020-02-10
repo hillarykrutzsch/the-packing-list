@@ -1,7 +1,7 @@
 import React from 'react';
+import TripBuilder from './TripBuilder';
 import {shallow} from 'enzyme';
-import App from './App';
 
 it('renders without crashing', () =>{
-    shallow(<App />);
-});
+    shallow(<TripBuilder />);
+})

@@ -1,7 +1,7 @@
 import React from 'react';
+import PackingList from './PackingList';
 import {shallow} from 'enzyme';
-import App from './App';
 
 it('renders without crashing', () =>{
-    shallow(<App />);
-});
+    shallow(<PackingList familyList={[]} />);
+})

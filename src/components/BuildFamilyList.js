@@ -16,7 +16,7 @@ class BuildFamilyList extends React.Component{
         });
         return(
             <div className="build-family-list">
-                <h1>How many family members are travelling?</h1>
+                <h1>How many family members are traveling?</h1>
                 <div className="ui container" style={{marginTop:'30px'}}>
                     <div className="add-buttons">
                         <div className="selector adult-selector">

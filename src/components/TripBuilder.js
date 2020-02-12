@@ -64,7 +64,7 @@ class TripBuilder extends React.Component{
                     <div className="ui buttons">
                         <button 
                             disabled={(this.state.currentPage < 2)} 
-                            className="ui labeled icon button" 
+                            className="ui labeled icon button btn-back" 
                             onClick={() => {
                                 //skip diaper page if no children are traveling
                                 ((this.state.currentPage===3 && this.returnChildList().length) || this.state.currentPage!==3) ? this.setState({currentPage: this.state.currentPage-1}) : this.setState({currentPage: this.state.currentPage-2})
@@ -75,7 +75,7 @@ class TripBuilder extends React.Component{
                         </button>
                         <button 
                             disabled={(this.state.currentPage === this.state.pageCount)} 
-                            className="ui right labeled icon button" 
+                            className="ui right labeled icon button btn-next" 
                             onClick={() => {
                                 //skip diaper page if no children are traveling
                                 ((this.state.currentPage===1 && this.returnChildList().length) || this.state.currentPage!==1) ? this.setState({currentPage: this.state.currentPage+1}) : this.setState({currentPage: this.state.currentPage+2})

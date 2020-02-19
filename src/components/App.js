@@ -15,20 +15,9 @@ class App extends React.Component{
             familyMembers: [],
             tripStartDate: null,
             tripEndDate: null,
-            numDays:0,
-            tripLocation: null,
-            weatherData: []
+            numDays:0
         }
     }
-    
-    /*async getWeatherAtLocation(){
-        if(this.state.tripLocation != null){
-            //need to call API here but moved this to actions
-            this.setState({weatherData:response.data.data})
-            this.calculatePackingList();
-        }
-
-    }*/
 
     addMember = (memberType) => {
         let newMember = {
@@ -76,10 +65,6 @@ class App extends React.Component{
         this.setState({ tripStartDate, tripEndDate, numDays   });
     }
 
-    updateLocationState = (tripLocation) => {
-        this.setState({tripLocation})
-    }
-
     render(){
         return (
             <div style={{marginTop:'40px'}}>
@@ -92,12 +77,10 @@ class App extends React.Component{
                         removeMember={this.removeMember}  
                         updateDiaperSituation={this.updateDiaperSituation}
                         onDatesChange={this.onDatesChange}
-                        updateLocationState={this.updateLocationState}
                     />
                 ) : 
                 (
                     <PackingListDisplay 
-                        weatherData={this.state.weatherData} 
                         familyList={this.state.familyMembers}
                         numDays={this.state.numDays}
                     />

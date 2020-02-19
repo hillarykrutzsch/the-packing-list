@@ -1,6 +1,7 @@
 import React from 'react';
 import WeatherDisplay from './WeatherDisplay';
 import PackingList from './PackingList';
+import {connect} from 'react-redux';
 
 class PackingListDisplay extends React.Component{
     render(){
@@ -13,7 +14,7 @@ class PackingListDisplay extends React.Component{
                     numDays={this.props.numDays}
                 />
 
-                <h2>Weather Info:</h2>
+                <h2>Weather Info for {this.props.tripLocation}:</h2>
                 <WeatherDisplay weatherData={this.props.weatherData} />
 
             </div>
@@ -21,4 +22,8 @@ class PackingListDisplay extends React.Component{
     }
 }
 
-export default PackingListDisplay;
+const mapStateToProps = (state) => {
+    return { tripLocation: state.tripLocation }
+}
+
+export default connect(mapStateToProps)(PackingListDisplay);

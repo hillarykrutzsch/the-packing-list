@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getWeatherAtLocation, setAppViewToPackingList } from '../actions';
+import { getWeatherAtLocation, setAppViewToPackingList, updateTripLocation } from '../actions';
 
 class LocationSelector extends React.Component{
 
@@ -9,7 +9,7 @@ class LocationSelector extends React.Component{
         this.props.getWeatherAtLocation();
         this.props.setAppViewToPackingList();
     }
-    
+
     render(){
         return(
             <div style={{margin: '1em 0', padding: '1em'}}>
@@ -21,7 +21,7 @@ class LocationSelector extends React.Component{
                             <input 
                                 type="text" 
                                 value={this.props.zipcode}
-                                onChange={(e) => this.props.updateLocationState(e.target.value)}
+                                onChange={(e) => this.props.updateTripLocation(e.target.value)}
                             />
                         </div>
                         <button type="submit">Generate Packing List</button>
@@ -32,4 +32,4 @@ class LocationSelector extends React.Component{
     }
 }
 
-export default connect(null, { getWeatherAtLocation, setAppViewToPackingList })(LocationSelector);
+export default connect(null, { getWeatherAtLocation, setAppViewToPackingList, updateTripLocation })(LocationSelector);

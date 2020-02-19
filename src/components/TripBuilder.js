@@ -50,9 +50,7 @@ class TripBuilder extends React.Component{
                         );
                     case 4:
                         return (
-                            <LocationSelector
-                                updateLocationState={this.props.updateLocationState}
-                            /> 
+                            <LocationSelector /> 
                             
                         );
                     default:

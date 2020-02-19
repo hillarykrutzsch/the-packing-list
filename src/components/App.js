@@ -1,19 +1,17 @@
 import React from 'react';
 import TripBuilder from './TripBuilder';
 import WeatherDisplay from './WeatherDisplay';
-import weatherAPI from '../api/weather';
 import moment from 'moment';
 import PackingListDisplay from './PackingListDisplay';
 import './styles/App.scss';
+import { connect } from 'react-redux';
 
-const API_KEY = 'b98eda624dda452f9459a883922ee87e';
 
 class App extends React.Component{
     constructor(props){
         super(props);
         this.idCounter = 0;
         this.state = {
-            appView: 'trip_builder', //'trip_builder', 'packing_list'
             familyMembers: [],
             tripStartDate: null,
             tripEndDate: null,
@@ -21,23 +19,16 @@ class App extends React.Component{
             tripLocation: null,
             weatherData: []
         }
-        this.getWeatherAtLocation = this.getWeatherAtLocation.bind(this);
     }
     
-    async getWeatherAtLocation(){
-		//let weatherData = await apiCalls.getWeatherAtLocation(this.state.tripLocation);
-        //this.setState({weatherData});
+    /*async getWeatherAtLocation(){
         if(this.state.tripLocation != null){
-            const response = await weatherAPI.get(`forecast/daily?key=${API_KEY}&units=I&country=US&postal_code=${this.state.tripLocation}`);
+            //need to call API here but moved this to actions
             this.setState({weatherData:response.data.data})
             this.calculatePackingList();
         }
 
-    }
-    
-    calculatePackingList(){
-        this.setState({appView: 'packing_list'});
-    }
+    }*/
 
     addMember = (memberType) => {
         let newMember = {
@@ -85,19 +76,14 @@ class App extends React.Component{
         this.setState({ tripStartDate, tripEndDate, numDays   });
     }
 
-    updateLocation = (tripLocation) => {
+    updateLocationState = (tripLocation) => {
         this.setState({tripLocation})
-    }
-
-    onLocationSubmit = (e) => {
-        e.preventDefault();
-        this.getWeatherAtLocation();
     }
 
     render(){
         return (
             <div style={{marginTop:'40px'}}>
-                {this.state.appView === 'trip_builder' ? (
+                {this.props.appView === 'trip_builder' ? (
                     <TripBuilder 
                         familyList={this.state.familyMembers}
                         tripStartDate={this.state.tripStartDate}
@@ -106,8 +92,7 @@ class App extends React.Component{
                         removeMember={this.removeMember}  
                         updateDiaperSituation={this.updateDiaperSituation}
                         onDatesChange={this.onDatesChange}
-                        updateLocation={this.updateLocation}
-                        onLocationSubmit={this.onLocationSubmit}
+                        updateLocationState={this.updateLocationState}
                     />
                 ) : 
                 (
@@ -123,4 +108,9 @@ class App extends React.Component{
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return { appView: state.appView }
+}
+
+
+export default connect(mapStateToProps)(App);

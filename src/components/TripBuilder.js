@@ -51,8 +51,7 @@ class TripBuilder extends React.Component{
                     case 4:
                         return (
                             <LocationSelector
-                                onLocationSubmit={this.props.onLocationSubmit}
-                                updateLocation={this.props.updateLocation}
+                                updateLocationState={this.props.updateLocationState}
                             /> 
                             
                         );

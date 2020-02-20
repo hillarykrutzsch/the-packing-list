@@ -9,8 +9,7 @@ class PackingListDisplay extends React.Component{
             <div className="ui container">
                 <h1>Here is your packing list:</h1>
 
-                <PackingList 
-                    familyList={this.props.familyList} 
+                <PackingList  
                     numDays={this.props.numDays}
                 />
 
@@ -23,7 +22,9 @@ class PackingListDisplay extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return { tripLocation: state.tripLocation }
+    return { 
+        tripLocation: state.tripLocation
+    }
 }
 
 export default connect(mapStateToProps)(PackingListDisplay);

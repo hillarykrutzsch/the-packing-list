@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {itemsListAdult, itemsListChild} from '../itemsList.js';
 import './styles/PackingList.scss';
 
@@ -78,7 +79,7 @@ class PackingList extends React.Component{
     }
 
     renderFamilyList = () => {
-        return this.props.familyList.map((familyMember) => {
+        return this.props.familyMembers.map((familyMember) => {
             if(familyMember.type == 'adult'){
                 return (
                     <div className="family-member-list">
@@ -107,4 +108,10 @@ class PackingList extends React.Component{
     }
 }
 
-export default PackingList;
+const mapStateToProps = (state) => {
+    return {
+        familyMembers: state.familyMembers
+    }
+}
+
+export default connect(mapStateToProps)(PackingList);

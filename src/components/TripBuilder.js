@@ -3,6 +3,7 @@ import BuildFamilyList from './BuildFamilyList';
 import DiaperSituation from './DiaperSituation';
 import DateSelector from './DateSelector';
 import LocationSelector from './LocationSelector';
+import { connect } from 'react-redux';
 import './styles/TripBuilder.scss';
 
 class TripBuilder extends React.Component{
@@ -28,7 +29,6 @@ class TripBuilder extends React.Component{
                     case 1:
                         return (
                             <BuildFamilyList 
-                                familyList={this.props.familyList} 
                                 removeMember={this.props.removeMember} 
                             />
                         );
@@ -87,4 +87,10 @@ class TripBuilder extends React.Component{
     }
 }
 
-export default TripBuilder;
+const mapStateToProps = (state) => {
+    return {
+        familyList: state.familyMembers
+    }
+}
+
+export default connect(mapStateToProps)(TripBuilder);

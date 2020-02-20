@@ -12,7 +12,6 @@ class App extends React.Component{
         super(props);
         this.idCounter = 0;
         this.state = {
-            familyMembers: [],
             tripStartDate: null,
             tripEndDate: null,
             numDays:0
@@ -20,9 +19,9 @@ class App extends React.Component{
     }
 
     removeMember = (memberType) => {
-        const foundMember = this.state.familyMembers.find(member => member.type === memberType);
+        const foundMember = this.props.familyMembers.find(member => member.type === memberType);
         if(foundMember){
-            const familyMembers = this.state.familyMembers.filter(member => {
+            const familyMembers = this.props.familyMembers.filter(member => {
                 return member.id !== foundMember.id;
             });
             this.setState({familyMembers});
@@ -30,7 +29,7 @@ class App extends React.Component{
         
     }
     updateDiaperSituation = (value, memberID) => {
-        const familyMembers = this.state.familyMembers.map(member => {
+        const familyMembers = this.props.familyMembers.map(member => {
 			if(member.id === memberID){
 				return {...member, diapers:value}
 			}
@@ -58,7 +57,6 @@ class App extends React.Component{
             <div style={{marginTop:'40px'}}>
                 {this.props.appView === 'trip_builder' ? (
                     <TripBuilder 
-                        familyList={this.state.familyMembers}
                         tripStartDate={this.state.tripStartDate}
                         tripEndDate={this.state.tripEndDate}
                         removeMember={this.removeMember}  
@@ -68,7 +66,6 @@ class App extends React.Component{
                 ) : 
                 (
                     <PackingListDisplay 
-                        familyList={this.state.familyMembers}
                         numDays={this.state.numDays}
                     />
                 )}
@@ -79,7 +76,9 @@ class App extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return { appView: state.appView }
+    return { 
+        appView: state.appView 
+    }
 }
 
 

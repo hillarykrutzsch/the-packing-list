@@ -47,3 +47,15 @@ export const removeFamilyMember = (memberType) => {
     }
 }
 
+export const updateDiaperSituation = (value, memberID) => {
+    let data = {
+        value,
+        memberID
+    };
+    return {
+        type: 'UPDATE_DIAPER_SITUATION',
+        data
+    }
+}
+
+

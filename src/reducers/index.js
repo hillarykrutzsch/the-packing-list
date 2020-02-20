@@ -38,7 +38,13 @@ export default function rootReducer(state = initialState, action){
                     familyMembers
                 } 
             }   
-            return state; 
+            return state;
+        case 'UPDATE_DIAPER_SITUATION':
+            const familyMembers = state.familyMembers.map(member => member.id === action.data.memberID ? {...member, diapers:action.data.value} : member);
+            return {
+                ...state,
+                familyMembers
+            }     
 		default: {
 			return {
 				...state

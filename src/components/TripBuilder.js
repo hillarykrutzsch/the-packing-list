@@ -34,7 +34,6 @@ class TripBuilder extends React.Component{
                         return (
                             <DiaperSituation
                                 childList={this.returnChildList()}
-                                updateDiaperSituation={this.props.updateDiaperSituation}
                             />
                         );
                     case 3:

@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateDiaperSituation } from '../actions';
 
 class DiaperSituation extends React.Component{
     render(){
@@ -69,4 +71,4 @@ class DiaperSituation extends React.Component{
     }
 }
 
-export default DiaperSituation;
+export default connect(null, { updateDiaperSituation })(DiaperSituation);

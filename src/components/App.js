@@ -16,17 +16,6 @@ class App extends React.Component{
             numDays:0
         }
     }
-    updateDiaperSituation = (value, memberID) => {
-        const familyMembers = this.props.familyMembers.map(member => {
-			if(member.id === memberID){
-				return {...member, diapers:value}
-			}
-			else{
-				return member;
-			}
-		})
-		this.setState({familyMembers});
-    }
 
     onDatesChange = (tripStartDate, tripEndDate) => {
         let numDays = this.state.numDays;
@@ -47,7 +36,6 @@ class App extends React.Component{
                     <TripBuilder 
                         tripStartDate={this.state.tripStartDate}
                         tripEndDate={this.state.tripEndDate}
-                        updateDiaperSituation={this.updateDiaperSituation}
                         onDatesChange={this.onDatesChange}
                     />
                 ) : 
@@ -67,6 +55,5 @@ const mapStateToProps = (state) => {
         appView: state.appView 
     }
 }
-
 
 export default connect(mapStateToProps)(App);

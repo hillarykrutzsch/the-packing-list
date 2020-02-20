@@ -2,13 +2,13 @@
 import React from 'react';
 import './styles/BuildFamilyList.scss';
 import { connect } from 'react-redux';
-import {addFamilyMember} from '../actions';
+import { addFamilyMember, removeFamilyMember } from '../actions';
 
 class BuildFamilyList extends React.Component{
     
     render(){
         const familyMembers = this.props.familyMembers.map(member => (
-            <div key={member.id}>Family Member: {member.type}</div>
+            <div key={member.id}>Family Member: {member.type}, ID: {member.id}</div>
         ));
         const adultCount = this.props.familyMembers.filter(member => {
             return member.type==='adult';
@@ -23,13 +23,13 @@ class BuildFamilyList extends React.Component{
                     <div className="add-buttons">
                         <div className="selector adult-selector">
                             <h3>Adults:</h3>
-                            <button className="ui button" onClick={() => this.props.removeMember('adult')}><i className="icon minus"></i></button>
+                            <button className="ui button" onClick={() => this.props.removeFamilyMember('adult')}><i className="icon minus"></i></button>
                             <h3 style={{display:'inline-block', margin:'0 1em'}}>{adultCount.length}</h3>
                             <button className="ui button" onClick={() => this.props.addFamilyMember('adult')}><i className="icon plus"></i></button>
                         </div>
                         <div className="selector child-selector">
                             <h3>Children:</h3>
-                            <button className="ui button" onClick={() => this.props.removeMember('child')}><i className="icon minus"></i></button>
+                            <button className="ui button" onClick={() => this.props.removeFamilyMember('child')}><i className="icon minus"></i></button>
                             <h3 style={{display:'inline-block', margin:'0 1em'}}>{childCount.length}</h3>
                             <button className="ui button" onClick={() => this.props.addFamilyMember('child')}><i className="icon plus"></i></button>
                         </div>
@@ -49,4 +49,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {addFamilyMember})(BuildFamilyList);
+export default connect(mapStateToProps, { addFamilyMember, removeFamilyMember })(BuildFamilyList);

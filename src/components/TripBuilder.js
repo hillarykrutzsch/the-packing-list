@@ -28,9 +28,7 @@ class TripBuilder extends React.Component{
                     switch(this.state.currentPage) {
                     case 1:
                         return (
-                            <BuildFamilyList 
-                                removeMember={this.props.removeMember} 
-                            />
+                            <BuildFamilyList />
                         );
                     case 2:
                         return (

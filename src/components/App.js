@@ -1,6 +1,5 @@
 import React from 'react';
 import TripBuilder from './TripBuilder';
-import WeatherDisplay from './WeatherDisplay';
 import moment from 'moment';
 import PackingListDisplay from './PackingListDisplay';
 import './styles/App.scss';
@@ -16,17 +15,6 @@ class App extends React.Component{
             tripEndDate: null,
             numDays:0
         }
-    }
-
-    removeMember = (memberType) => {
-        const foundMember = this.props.familyMembers.find(member => member.type === memberType);
-        if(foundMember){
-            const familyMembers = this.props.familyMembers.filter(member => {
-                return member.id !== foundMember.id;
-            });
-            this.setState({familyMembers});
-        }
-        
     }
     updateDiaperSituation = (value, memberID) => {
         const familyMembers = this.props.familyMembers.map(member => {
@@ -59,7 +47,6 @@ class App extends React.Component{
                     <TripBuilder 
                         tripStartDate={this.state.tripStartDate}
                         tripEndDate={this.state.tripEndDate}
-                        removeMember={this.removeMember}  
                         updateDiaperSituation={this.updateDiaperSituation}
                         onDatesChange={this.onDatesChange}
                     />

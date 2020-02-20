@@ -15,7 +15,7 @@ class PackingList extends React.Component{
     renderListItems = (familyMember) => {
         let listCategories = [];
         let listObject = null;
-        if(familyMember.type == 'adult'){
+        if(familyMember.type === 'adult'){
             listObject = JSON.parse(JSON.stringify(itemsListAdult));
         }
         else{
@@ -37,22 +37,24 @@ class PackingList extends React.Component{
                         //1 for every 3 days
                         multiplier = Math.ceil(this.props.numDays / 3);
                     break;   
+                    default:
+                    break;
                 }
                 //diapers
-                if(familyMember.type == 'child'){
+                if(familyMember.type === 'child'){
                     console.log('diapers:' + familyMember.diapers);
-                    if(familyMember.diapers == 'diapers'){
+                    if(familyMember.diapers === 'diapers'){
                         listObject['bathroom_daily']['pullups'] = 0;
                         listObject['clothing_daily']['underwear'] = 0;
                     }
-                    if(familyMember.diapers == 'pullups'){
+                    if(familyMember.diapers === 'pullups'){
                         listObject['bathroom_daily']['diapers'] = 0;
                         listObject['clothing_daily']['underwear'] = 0;
                     }
-                    if(familyMember.diapers == 'combo'){
+                    if(familyMember.diapers === 'combo'){
                         listObject['bathroom_daily']['diapers'] = 0;
                     }
-                    if(familyMember.diapers == 'underwear'){
+                    if(familyMember.diapers === 'underwear'){
                         listObject['bathroom_daily']['diapers'] = 0;
                         listObject['bathroom_daily']['pullups'] = 0;
                     }
@@ -80,7 +82,7 @@ class PackingList extends React.Component{
 
     renderFamilyList = () => {
         return this.props.familyMembers.map((familyMember) => {
-            if(familyMember.type == 'adult'){
+            if(familyMember.type === 'adult'){
                 return (
                     <div className="family-member-list">
                         <h3>Adult:</h3> 

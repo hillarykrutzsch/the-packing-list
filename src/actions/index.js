@@ -34,9 +34,16 @@ export const addFamilyMember = (memberType) => {
     if(memberType==='child'){
         newMember.diapers = 'diapers';
     }
-    console.log('currId: ' + currId);
     return {
         type: 'ADD_FAMILY_MEMBER',
         newMember
     }
 }
+
+export const removeFamilyMember = (memberType) => {
+    return {
+        type: 'REMOVE_FAMILY_MEMBER',
+        memberType
+    }
+}
+

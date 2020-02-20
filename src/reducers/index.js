@@ -26,7 +26,19 @@ export default function rootReducer(state = initialState, action){
             return {
                 ...state,
                 familyMembers: [...state.familyMembers, action.newMember]
-            }    
+            }   
+        case 'REMOVE_FAMILY_MEMBER':
+            let foundMember = state.familyMembers.find(member => member.type === action.memberType);
+            if(foundMember){
+                let familyMembers = state.familyMembers.filter(member => {
+                    return member.id !== foundMember.id;
+                });
+                return {
+                    ...state,
+                    familyMembers
+                } 
+            }   
+            return state; 
 		default: {
 			return {
 				...state

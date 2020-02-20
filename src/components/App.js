@@ -19,18 +19,6 @@ class App extends React.Component{
         }
     }
 
-    addMember = (memberType) => {
-        let newMember = {
-            id:  this.idCounter++,
-            type:memberType
-        };
-        if(memberType==='child'){
-            newMember.diapers = 'diapers';
-        }
-        this.setState({
-            familyMembers: [...this.state.familyMembers, newMember]
-        });
-    }
     removeMember = (memberType) => {
         const foundMember = this.state.familyMembers.find(member => member.type === memberType);
         if(foundMember){
@@ -73,7 +61,6 @@ class App extends React.Component{
                         familyList={this.state.familyMembers}
                         tripStartDate={this.state.tripStartDate}
                         tripEndDate={this.state.tripEndDate}
-                        addMember={this.addMember} 
                         removeMember={this.removeMember}  
                         updateDiaperSituation={this.updateDiaperSituation}
                         onDatesChange={this.onDatesChange}

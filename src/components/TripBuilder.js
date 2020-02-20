@@ -29,7 +29,6 @@ class TripBuilder extends React.Component{
                         return (
                             <BuildFamilyList 
                                 familyList={this.props.familyList} 
-                                addMember={this.props.addMember} 
                                 removeMember={this.props.removeMember} 
                             />
                         );

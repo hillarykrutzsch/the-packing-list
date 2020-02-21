@@ -4,13 +4,6 @@ import {itemsListAdult, itemsListChild} from '../itemsList.js';
 import './styles/PackingList.scss';
 
 class PackingList extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            adultCategories:[],
-            childCategories:[]
-        }
-    }
 
     renderListItems = (familyMember) => {
         let listCategories = [];

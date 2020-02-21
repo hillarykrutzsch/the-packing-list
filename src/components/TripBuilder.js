@@ -38,11 +38,7 @@ class TripBuilder extends React.Component{
                         );
                     case 3:
                         return (
-                            <DateSelector
-                                tripStartDate={this.props.tripStartDate}
-                                tripEndDate={this.props.tripEndDate}
-                                onDatesChange={this.props.onDatesChange}
-                            />
+                            <DateSelector />
                         );
                     case 4:
                         return (

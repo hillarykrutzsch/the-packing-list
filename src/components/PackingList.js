@@ -42,7 +42,6 @@ class PackingList extends React.Component{
                 }
                 //diapers
                 if(familyMember.type === 'child'){
-                    console.log('diapers:' + familyMember.diapers);
                     if(familyMember.diapers === 'diapers'){
                         listObject['bathroom_daily']['pullups'] = 0;
                         listObject['clothing_daily']['underwear'] = 0;
@@ -112,7 +111,8 @@ class PackingList extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        familyMembers: state.familyMembers
+        familyMembers: state.familyMembers,
+        numDays: state.numDays
     }
 }
 

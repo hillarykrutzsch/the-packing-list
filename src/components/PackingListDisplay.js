@@ -9,9 +9,7 @@ class PackingListDisplay extends React.Component{
             <div className="ui container">
                 <h1>Here is your packing list:</h1>
 
-                <PackingList  
-                    numDays={this.props.numDays}
-                />
+                <PackingList  />
 
                 <h2>Weather Info for {this.props.tripLocation}:</h2>
                 <WeatherDisplay weatherData={this.props.weatherData} />

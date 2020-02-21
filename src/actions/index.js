@@ -1,5 +1,7 @@
 import weatherAPI from '../api/weather';
 
+import moment from 'moment';
+
 
 const API_KEY = 'b98eda624dda452f9459a883922ee87e';
 let currId = 0;
@@ -48,13 +50,21 @@ export const removeFamilyMember = (memberType) => {
 }
 
 export const updateDiaperSituation = (value, memberID) => {
-    let data = {
-        value,
-        memberID
-    };
     return {
         type: 'UPDATE_DIAPER_SITUATION',
-        data
+        data: {value, memberID}
+    }
+}
+
+export const changeTripDates = (tripStartDate, tripEndDate, numDays) => {
+    if(tripStartDate && tripEndDate){
+        let a = moment(tripStartDate._d).format("YYYY/MM/DD");
+        let b = moment(tripEndDate._d).format("YYYY/MM/DD");
+        numDays = moment(b).diff(moment(a), 'days');
+    }
+    return {
+        type: 'CHANGE_TRIP_DATES',
+        data: { tripStartDate, tripEndDate, numDays }
     }
 }
 

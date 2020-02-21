@@ -2,7 +2,10 @@ const initialState = {
     weatherData: [],
     appView: 'trip_builder',
     tripLocation: null,
-    familyMembers: []
+    familyMembers: [],
+    tripStartDate: null,
+    tripEndDate: null,
+    numDays: 0
 }
 
 export default function rootReducer(state = initialState, action){
@@ -44,7 +47,14 @@ export default function rootReducer(state = initialState, action){
             return {
                 ...state,
                 familyMembers
-            }     
+            } 
+        case 'CHANGE_TRIP_DATES':
+            return {
+                ...state,
+                tripStartDate: action.data.tripStartDate,
+                tripEndDate: action.data.tripEndDate,
+                numDays: action.data.numDays
+            }        
 		default: {
 			return {
 				...state

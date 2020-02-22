@@ -3,19 +3,17 @@ import TripBuilder from './TripBuilder';
 import PackingListDisplay from './PackingListDisplay';
 import './styles/App.scss';
 import { connect } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 class App extends React.Component{
     render(){
         return (
             <div style={{marginTop:'40px'}}>
-                {this.props.appView === 'trip_builder' ? (
-                    <TripBuilder />
-                ) : 
-                (
-                    <PackingListDisplay />
-                )}
-                
+                <BrowserRouter>
+                    <Route path="/" exact component={TripBuilder} />
+                    <Route path="/list" exact component={PackingListDisplay} />
+                </BrowserRouter>  
             </div>
         );
     }

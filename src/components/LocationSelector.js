@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getWeatherAtLocation, setAppViewToPackingList, updateTripLocation } from '../actions';
+import { withRouter } from 'react-router-dom';
 
 class LocationSelector extends React.Component{
+  
 
     getWeather = (e) => {
         e.preventDefault();
         this.props.getWeatherAtLocation();
-        this.props.setAppViewToPackingList();
+        this.props.history.push('/list');
+        //this.props.setAppViewToPackingList();
     }
 
     render(){
@@ -32,4 +35,4 @@ class LocationSelector extends React.Component{
     }
 }
 
-export default connect(null, { getWeatherAtLocation, setAppViewToPackingList, updateTripLocation })(LocationSelector);
+export default connect(null, { getWeatherAtLocation, setAppViewToPackingList, updateTripLocation })(withRouter(LocationSelector));
